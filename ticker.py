@@ -41,6 +41,7 @@ class _BitcoinTicker():
         vol_display = vol
         if len(vol_parts) > 1:
           vol_display = vol_parts[0]
+        vol_display = "{:,d}".format(int(vol_display))
         spacer = '&nbsp;&nbsp;&nbsp;&nbsp;'
         if FULLTICKER:
           print 'Last %s%s High %s%s Low %s%s Volume %s BTC%s Bitstamp/USD %s %s'  % (
@@ -52,13 +53,13 @@ class _BitcoinTicker():
             , spacer
             , vol_display
             , spacer
-            , time.strftime('%d %b %H:%M:%S', time_tuple)
+            , time.strftime('%d %b %H:%M', time_tuple)
             , 'GMT'
           )
         else:
           timestamp = data['timestamp']
           time_tuple = time.gmtime(int(timestamp))
-          print '1.00 BTC = %s (Last) as of %s %s' % (data['last'], time.strftime('%d %b %H:%M:%S', time_tuple), 'GMT')
+          print '1.00 BTC = %s (Last) as of %s %s' % (data['last'], time.strftime('%d %b %H:%M', time_tuple), 'GMT')
       else:
         print '%s' % data['result']
     else:
