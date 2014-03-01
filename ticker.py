@@ -23,8 +23,8 @@ class _BitcoinTicker():
       print 'Content-type: text/html\n'
       reqr = requester()
       if GOXXED:
-        failnotice = """Ticker disabled. Click <a href="http://winkdex.com/">here</a> for a weighted average of the various exchange prices."""
-        data = {'result': '%s' % failnotice,}
+        fail_notice = """Ticker disabled. Click <a href="http://winkdex.com/">here</a> for a weighted average of the various exchange prices."""
+        data = {'result': '%s' % fail_notice,}
       else:
         data = reqr.perform()
       # bitstamp json eg: {"high": "584.80", "last": "562.96", "timestamp": "1393644880", "bid": "555.04", "volume": "28407.09241400", "low": "535.00", "ask": "562.96"}
@@ -35,12 +35,12 @@ class _BitcoinTicker():
         vol = data['volume']
         #vwap = data['vwap']
         timestamp = data['timestamp']
-        timetuple = time.gmtime(int(timestamp))
+        time_tuple = time.gmtime(int(timestamp))
         # display only the integer portion of the volume number
-        volparts = vol.split('.')
+        vol_parts = vol.split('.')
         vol_display = vol
-        if len(volparts) > 1:
-          vol_display = volparts[0]
+        if len(vol_parts) > 1:
+          vol_display = vol_parts[0]
         spacer = '&nbsp;&nbsp;&nbsp;&nbsp;'
         if FULLTICKER:
           print 'Last %s%s High %s%s Low %s%s Volume %s BTC%s Bitstamp/USD %s %s'  % (
@@ -52,13 +52,13 @@ class _BitcoinTicker():
             , spacer
             , vol_display
             , spacer
-            , time.strftime('%d %b %H:%M:%S', timetuple)
+            , time.strftime('%d %b %H:%M:%S', time_tuple)
             , 'GMT'
           )
         else:
           timestamp = data['timestamp']
-          timetuple = time.gmtime(int(timestamp))
-          print '1.00 BTC = %s (Last) as of %s %s' % (data['last'], time.strftime('%d %b %H:%M:%S', timetuple), 'GMT')
+          time_tuple = time.gmtime(int(timestamp))
+          print '1.00 BTC = %s (Last) as of %s %s' % (data['last'], time.strftime('%d %b %H:%M:%S', time_tuple), 'GMT')
       else:
         print '%s' % data['result']
     else:
