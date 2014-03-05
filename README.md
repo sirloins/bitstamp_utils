@@ -3,7 +3,7 @@ bitstamp_utils
 
 Python code to obtain bitcoin price and volume data from Bitstamp.net via the Bitstamp API
 
-The _bitCoinTicker class retrieves ticker data (json format) from bitstamp.net and converts
+The _bitcoinTicker class retrieves ticker data (json format) from bitstamp.net and converts
 it to plain html.
 
 This script can run as a server-side include (cgi) from your web page.
