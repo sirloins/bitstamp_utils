@@ -10,10 +10,10 @@ import urllib2
 FULLTICKER = True  # If False then display only the weighted average price
 GOXXED = False     # If True then display only some text explaining the latest goxxing (ie. why the ticker ain't working)
 
-class requester():  
-    def perform(self):
-        res = urllib2.urlopen("https://www.bitstamp.net/api/ticker/")
-        return json.load(res)
+class requester():
+  def perform(self):
+    res = urllib2.urlopen("https://www.bitstamp.net/api/ticker/")
+    return json.load(res)
 
 class _BitcoinTicker():
   """ Retrieve ticker data (json format) and convert it to plain html.
