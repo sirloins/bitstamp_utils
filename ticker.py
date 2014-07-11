@@ -1,10 +1,4 @@
-#!/usr/bin/env python
-# 
-import os
-import json
-import sys
-import time
-import traceback#!/opt/bin/python2.7
+#!/opt/bin/python2.7
 # was --> /usr/bin/env python
 # 
 import os
